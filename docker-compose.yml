@@ -1,0 +1,8 @@
+services:
+  playwright:
+    build: .
+    ports:
+      - "8002:8002"
+    volumes:
+      - ./output:/output
+    shm_size: "2gb"
