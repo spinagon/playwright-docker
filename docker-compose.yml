@@ -6,3 +6,5 @@ services:
     volumes:
       - ./output:/output
     shm_size: "2gb"
+    restart: unless-stopped
+    container_name: playwright
