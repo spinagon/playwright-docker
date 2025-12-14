@@ -4,7 +4,7 @@ services:
     ports:
       - "8002:8002"
     volumes:
-      - ./output:/output
+      - ${OUTPUT:-./output}:/output
     shm_size: "2gb"
     restart: unless-stopped
     container_name: playwright
