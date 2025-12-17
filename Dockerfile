@@ -8,7 +8,7 @@ RUN uv sync
 
 COPY app.py .
 COPY send_mail.py .
-COPY __init__.py
+COPY __init__.py .
 
 EXPOSE 8002
 
