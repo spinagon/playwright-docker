@@ -6,6 +6,7 @@ import os
 import re
 import hashlib
 from urllib.parse import urlparse
+from send_mail import send_mail
 
 def url_to_slug(url: str, max_len: int = 120) -> str:
     parsed = urlparse(url)
@@ -44,3 +45,25 @@ def pdf(req: Req):
         raise HTTPException(status_code=500, detail=str(e))
 
     return {"file": f"{slug}.pdf"}
+
+@app.post('/send_pdf')
+def send_pdf(req: Req):
+    try:
+        target_url = req.url
+        payload = Req.model_validate({"url": target_url})
+        filename = pdf(payload).get('file')
+        full_file_path = os.path.join("output", filename)
+        send_mail(
+            subject="PDF Generation Complete",
+            body=f"Here is the PDF generated from {target_url}",
+            attachments=(full_file_path,)
+        )
+
+        return {
+            "status": "success", 
+            "message": "PDF generated and email trigger initiated",
+            "path": full_file_path
+        }
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

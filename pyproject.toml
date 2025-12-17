@@ -1,0 +1,13 @@
+[project]
+name = "playwright-flak"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.124.4",
+    "flask>=3.1.2",
+    "playwright>=1.57.0",
+    "requests>=2.32.5",
+    "uvicorn>=0.38.0",
+]
