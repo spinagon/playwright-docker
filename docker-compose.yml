@@ -5,6 +5,7 @@ services:
       - "8002:8002"
     volumes:
       - ${OUTPUT:-./output}:/output
+      - ${HOME}/.cache/uv:/root/.cache/uv
     shm_size: "2gb"
     restart: unless-stopped
     container_name: playwright
