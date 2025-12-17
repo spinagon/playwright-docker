@@ -7,6 +7,8 @@ RUN pip install --no-cache-dir uv
 RUN uv sync
 
 COPY app.py .
+COPY send_mail.py .
+COPY __init__.py
 
 EXPOSE 8002
 
