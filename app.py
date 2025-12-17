@@ -52,7 +52,7 @@ def send_pdf(req: Req):
         target_url = req.url
         payload = Req.model_validate({"url": target_url})
         filename = pdf(payload).get('file')
-        full_file_path = os.path.join("output", filename)
+        full_file_path = os.path.join("/output", filename)
         send_mail(
             subject="PDF Generation Complete",
             body=f"Here is the PDF generated from {target_url}",
