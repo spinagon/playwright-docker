@@ -9,3 +9,7 @@ services:
     shm_size: "2gb"
     restart: unless-stopped
     container_name: playwright
+    environment:
+     - SENDER_EMAIL
+     - SENDER_PASSWORD
+     - RECEIVER_EMAIL

@@ -13,8 +13,14 @@ import os
 
 # Email credentials and details
 sender_email = os.getenv("SENDER_EMAIL")
+if not sender_email:
+    raise Exception("Sender email empty")
 sender_password = os.getenv("SENDER_PASSWORD")
+if not sender_password:
+    raise Exception("Sender password empty")
 receiver_email = os.getenv("RECEIVER_EMAIL")
+if not receiver_email:
+    raise Exception("Receiver email empty")
 
 
 def send_mail(address=receiver_email, subject="", body="", attachments=()):
